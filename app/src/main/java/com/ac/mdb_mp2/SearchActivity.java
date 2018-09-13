@@ -77,8 +77,9 @@ public class SearchActivity extends AppCompatActivity {
         if (!minSpeed.getText().toString().isEmpty()) { minSpeedFilter = Integer.parseInt(minSpeed.getText().toString()); }
         if (!minTotal.getText().toString().isEmpty()) { minTotalFilter = Integer.parseInt(minTotal.getText().toString()); }
 
-        firstType = dropdown.getSelectedItem().toString();
-        secondType = dropdown.getSelectedItem().toString();
+        if (dropdown.getSelectedItem() != null) { firstType = dropdown.getSelectedItem().toString(); }
+        if (dropdown2.getSelectedItem() != null) { secondType = dropdown2.getSelectedItem().toString(); }
+
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra("minHP",minHPFilter);
