@@ -13,6 +13,16 @@ public class Utils {
     public static ArrayList<Pokemon> allPokemon = new ArrayList<Pokemon>();
     public static ArrayList<String> allTypes = new ArrayList<String>();
 
+    public static int minHPFilter = 0;
+    public static int minAtkFilter = 0;
+    public static int minDefFilter = 0;
+    public static int minSpecAtkFilter = 0;
+    public static int minSpecDefFilter = 0;
+    public static int minSpeedFilter = 0;
+    public static int minTotalFilter = 0;
+    public static String firstType = "";
+    public static String secondType = "";
+
 
     public static void parseJSON(String pokemonData) {
         JSONObject obj = null; // holds all data
