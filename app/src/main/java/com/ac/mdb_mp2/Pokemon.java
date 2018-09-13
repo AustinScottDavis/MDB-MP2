@@ -24,6 +24,7 @@ public class Pokemon {
         this.number = num;
         this.attack = atk;
         this.defense = def;
+        this.hp = hp;
         this.spAttack = spAtk;
         this.spDefense = spDef;
         this.speed = spd;
