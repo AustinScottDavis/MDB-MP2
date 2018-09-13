@@ -11,13 +11,15 @@ import java.util.List;
 public class Utils {
 
     public static ArrayList<Pokemon> allPokemon = new ArrayList<Pokemon>();
+    public static ArrayList<String> allTypes = new ArrayList<String>();
+
 
     public static void parseJSON(String pokemonData) {
-        JSONObject obj = null;
+        JSONObject obj = null; // holds all data
         try {
-            obj = new JSONObject(pokemonData);
+            obj = new JSONObject(pokemonData); // create as JSON
             Iterator<String> pokemonNames = obj.keys();
-            while (pokemonNames.hasNext()) {
+            while (pokemonNames.hasNext()) { // loop through all keys
                 String currentPokemon = pokemonNames.next(); // name of current pokemon
 
                 JSONObject pokemonInfo = obj.getJSONObject(currentPokemon); // info for this pokemon
@@ -30,10 +32,16 @@ public class Utils {
                 int speed = Integer.parseInt(pokemonInfo.getString("Speed"));
                 int total = Integer.parseInt(pokemonInfo.getString("Total"));
 
+                // add type
                 JSONArray arr = pokemonInfo.getJSONArray("Type");
                 ArrayList<String> type = new ArrayList<String>();
-                for (int i = 0; i < arr.length(); i++){
-                    type.add(arr.getString(i));
+                for (int i = 0; i < arr.length(); i++) {
+                    String currentType = arr.getString(i);
+                    type.add(currentType);
+                    // save type in lists of all types (easier to search)
+                    if (!allTypes.contains(currentType)) {
+                        allTypes.add(currentType);
+                    }
                 }
 
                 String flavorText = pokemonInfo.getString("FlavorText");
