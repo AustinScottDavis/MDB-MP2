@@ -11,8 +11,8 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        Intent intentStartGame = new Intent(SearchActivity.this, ListActivity.class);
-        SearchActivity.this.startActivity(intentStartGame);
+        String pokemonData = getString(R.string.pokemonData); // fetch JSON string from file (too large to use as constant)
+        Utils.parseJSON(pokemonData); // parse the data and add into allPokemon
     }
 
 
