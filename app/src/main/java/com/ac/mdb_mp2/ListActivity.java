@@ -19,6 +19,8 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView.Adapter pokeAdapter;
     private RecyclerView.LayoutManager pokeLayoutManager;
     Button listGridSwitch;
+    Button moreFiltersButton;
+    Button clearButton;
     boolean grid;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public class ListActivity extends AppCompatActivity {
         Utils.parseJSON(pokemonData);
 
         listGridSwitch = findViewById(R.id.listGridButton);
+        moreFiltersButton = findViewById(R.id.moreFilters);
+        clearButton = findViewById(R.id.clearButton);
         grid = false;
 
         //creating the recycler view
@@ -37,13 +41,7 @@ public class ListActivity extends AppCompatActivity {
         pokeLayoutManager = new LinearLayoutManager(this);
 
         resetLayout();
-        //creating the adapter
-        pokeAdapter = new PokeAdapter(getApplicationContext(), pokemonDataList);
-        pokeRecyclerView.setAdapter(pokeAdapter);
-
-        //starting from the search window. CHANGE LATER
-        Intent i = new Intent(ListActivity.this, SearchActivity.class);
-        ListActivity.this.startActivityForResult(i, 1);
+        browseList();
     }
 
     //sets the layout to be either the list or grid view
@@ -71,6 +69,24 @@ public class ListActivity extends AppCompatActivity {
 
                 resetLayout();
                 //System.out.println(grid);
+            }
+        });
+        moreFiltersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ListActivity.this, SearchActivity.class);
+                ListActivity.this.startActivityForResult(i, 1);
+            }
+        });
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pokemonDataList = Utils.allPokemon;
+                pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                pokeRecyclerView.setHasFixedSize(true);
+                pokeLayoutManager = new LinearLayoutManager(ListActivity.this);
+
+                resetLayout();
             }
         });
     }
