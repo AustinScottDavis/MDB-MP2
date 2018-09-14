@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,8 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView pokeRecyclerView;
     private RecyclerView.Adapter pokeAdapter;
     private RecyclerView.LayoutManager pokeLayoutManager;
+    Button listGridSwitch;
+    boolean grid;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,18 +27,52 @@ public class ListActivity extends AppCompatActivity {
         String pokemonData = getString(R.string.pokemonData); // fetch JSON string from file (too large to use as constant)
         Utils.parseJSON(pokemonData);
 
+        listGridSwitch = findViewById(R.id.listGridButton);
+        grid = false;
+
+        //creating the recycler view
         pokemonDataList = Utils.allPokemon;
         pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         pokeRecyclerView.setHasFixedSize(true);
         pokeLayoutManager = new LinearLayoutManager(this);
 
-        pokeRecyclerView.setLayoutManager(pokeLayoutManager);
-        //pokeRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        resetLayout();
+        //creating the adapter
         pokeAdapter = new PokeAdapter(getApplicationContext(), pokemonDataList);
         pokeRecyclerView.setAdapter(pokeAdapter);
 
+        //starting from the search window. CHANGE LATER
         Intent i = new Intent(ListActivity.this, SearchActivity.class);
         ListActivity.this.startActivityForResult(i, 1);
+    }
+
+    //sets the layout to be either the list or grid view
+    public void resetLayout() {
+        if (!grid) {
+            pokeRecyclerView.setLayoutManager(pokeLayoutManager);
+        } else {
+            pokeRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }
+        pokeAdapter = new PokeAdapter(getApplicationContext(), pokemonDataList);
+        pokeRecyclerView.setAdapter(pokeAdapter);
+    }
+
+    public void browseList() {
+        resetLayout();
+        listGridSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid = !grid;
+                if (grid) {
+                    listGridSwitch.setText("Grid");
+                } else {
+                    listGridSwitch.setText("List");
+                }
+
+                resetLayout();
+                //System.out.println(grid);
+            }
+        });
     }
 
     @Override
@@ -67,15 +105,14 @@ public class ListActivity extends AppCompatActivity {
                 pokeRecyclerView.setHasFixedSize(true);
                 pokeLayoutManager = new LinearLayoutManager(this);
 
-                pokeRecyclerView.setLayoutManager(pokeLayoutManager);
-                //pokeRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-                pokeAdapter = new PokeAdapter(getApplicationContext(), pokemonDataList);
-                pokeRecyclerView.setAdapter(pokeAdapter);
+                resetLayout();
+                browseList();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
             }
         }
+
     }
 
 }
