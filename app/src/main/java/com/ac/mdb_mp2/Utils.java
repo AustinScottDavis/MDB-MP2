@@ -45,6 +45,7 @@ public class Utils {
                 // add type
                 JSONArray arr = pokemonInfo.getJSONArray("Type");
                 ArrayList<String> type = new ArrayList<String>();
+                allTypes.add("Select Type");
                 for (int i = 0; i < arr.length(); i++) {
                     String currentType = arr.getString(i);
                     type.add(currentType);

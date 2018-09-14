@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="300"
+        android:layout_height="50"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="241dp">
+
+        <TextView
+            android:id="@+id/profileHP"
+            android:layout_width="145dp"
+            android:layout_height="52dp"
+            android:text="profileHP"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profileSpeed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="profileSpeed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profileHP"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/profileTotal"
+        android:layout_width="315dp"
+        android:layout_height="39dp"
+        android:text="profileTotal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="456dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profileName"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:text="Pokemon Name"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/profileNumber"
+            android:layout_width="200dp"
+            android:layout_height="28dp"
+            android:text="Pokemon Number"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="64dp" />
+
+        <TextView
+            android:id="@+id/profileSpecies"
+            android:layout_width="200dp"
+            android:layout_height="41dp"
+            android:text="Pokemon Species"
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="101dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profileSpecDef"
+            android:layout_width="145dp"
+            android:layout_height="43dp"
+            android:text="profileSpecDef"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="399dp" />
+
+        <TextView
+            android:id="@+id/profileSpecAtk"
+            android:layout_width="145dp"
+            android:layout_height="48dp"
+            android:text="profileSpecAtk"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="399dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profDef"
+            android:layout_width="145dp"
+            android:layout_height="52dp"
+            android:text="profDef"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="328dp" />
+
+        <TextView
+            android:id="@+id/profAtk"
+            android:layout_width="145dp"
+            android:layout_height="52dp"
+            android:text="profAtk"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="328dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="111dp"
+        android:layout_height="132dp"
+        app:srcCompat="@drawable/pokeball"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/profileFlavor"
+        android:layout_width="333dp"
+        android:layout_height="41dp"
+        android:text="Flavor Text"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="177dp" />
+
+</android.support.constraint.ConstraintLayout>

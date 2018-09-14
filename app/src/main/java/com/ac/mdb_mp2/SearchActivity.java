@@ -34,12 +34,10 @@ public class SearchActivity extends AppCompatActivity {
 
         // prepare dropdowns of types
         dropdown = findViewById(R.id.spinner1);
-        dropdown.setPrompt("Select Type");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Utils.allTypes);
         dropdown.setAdapter(adapter);
 
         dropdown2 = findViewById(R.id.spinner2);
-        dropdown2.setPrompt("Select Type");
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Utils.allTypes);
         dropdown2.setAdapter(adapter2);
 
