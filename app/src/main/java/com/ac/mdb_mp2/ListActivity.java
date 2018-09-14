@@ -13,6 +13,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<Pokemon> pokemonDataList;
@@ -24,6 +25,8 @@ public class ListActivity extends AppCompatActivity {
     Button moreFiltersButton;
     Button clearButton;
     Button sortButton;
+    Button randomButton;
+    Random rand;
     boolean grid;
     boolean sortByNumber;
 
@@ -37,8 +40,10 @@ public class ListActivity extends AppCompatActivity {
         moreFiltersButton = findViewById(R.id.moreFilters);
         clearButton = findViewById(R.id.clearButton);
         sortButton = findViewById(R.id.sortButton);
+        randomButton = findViewById(R.id.randomButton);
         grid = false;
         sortByNumber = false;
+        rand = new Random();
 
         //creating the recycler view
         pokemonDataList = Utils.allPokemon;
@@ -102,6 +107,23 @@ public class ListActivity extends AppCompatActivity {
                 resetLayout();
             }
         });
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<Integer> randIndices = new ArrayList<>();
+                ArrayList<Pokemon> randPokemon = new ArrayList<>();
+                int currentRand;
+                for (int i = 0; i < 20; i += 1) {
+                    currentRand = rand.nextInt(Utils.allPokemon.size());
+                    if (!randPokemon.contains(Utils.allPokemon.get(currentRand))) {
+                        randPokemon.add(Utils.allPokemon.get(currentRand));
+                    }
+                }
+                pokemonDataList = randPokemon;
+                pokeAdapter.notifyDataSetChanged();
+                resetLayout();
+            }
+        });
     }
 
     public void sort() {
@@ -140,7 +162,7 @@ public class ListActivity extends AppCompatActivity {
 
                 //System.out.println(minHP);
                 filteredPokemon = new ArrayList<Pokemon>();
-                for (int i = 0; i < Utils.allPokemon.size(); i++) {
+                for (int i = 0; i < Utils.allPokemon.size(); i += 1) {
                     if (Utils.allPokemon.get(i).hp < Utils.minHPFilter) { continue; }
                     if (Utils.allPokemon.get(i).attack < Utils.minAtkFilter) { continue; }
                     if (Utils.allPokemon.get(i).defense < Utils.minDefFilter) { continue; }
@@ -167,7 +189,7 @@ public class ListActivity extends AppCompatActivity {
                 }
 
                 pokemonDataList = filteredPokemon;
-
+                System.out.println(pokemonDataList);
                 pokeAdapter.notifyDataSetChanged();
 //                pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 //                pokeRecyclerView.setHasFixedSize(true);

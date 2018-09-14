@@ -38,6 +38,8 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
         if (URLUtil.isValidUrl(url)) {
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
+        } else {
+            Glide.with(holder.imageView.getContext()).load("https://t5.rbxcdn.com/1fd52587f9b87d16ba1550109abe2377").into(holder.imageView);
         }
     }
 
