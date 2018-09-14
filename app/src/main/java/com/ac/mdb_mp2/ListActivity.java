@@ -186,10 +186,13 @@ public class ListActivity extends AppCompatActivity {
 
 
                     filteredPokemon.add(Utils.allPokemon.get(i));
+                    System.out.println(i);
                 }
 
                 pokemonDataList = filteredPokemon;
-                System.out.println(pokemonDataList);
+                for (Pokemon p : pokemonDataList) {
+                    System.out.println(p.name);
+                }
                 pokeAdapter.notifyDataSetChanged();
 //                pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 //                pokeRecyclerView.setHasFixedSize(true);

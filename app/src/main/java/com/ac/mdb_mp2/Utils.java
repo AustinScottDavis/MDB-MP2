@@ -26,9 +26,12 @@ public class Utils {
 
     public static void parseJSON(String pokemonData) {
         JSONObject obj = null; // holds all data
+
         try {
             obj = new JSONObject(pokemonData); // create as JSON
             Iterator<String> pokemonNames = obj.keys();
+            int jk = 0;
+            allPokemon.clear();
             while (pokemonNames.hasNext()) { // loop through all keys
                 String currentPokemon = pokemonNames.next(); // name of current pokemon
 
@@ -63,7 +66,8 @@ public class Utils {
 
                 Pokemon current = new Pokemon(currentPokemon, num, attack, defense, hp, specialAttack, specialDefense, speed, total, type, flavorText, species);
                 allPokemon.add(current);
-
+                System.out.println(jk);
+                jk += 1;
             }
         } catch (JSONException e) {
             e.printStackTrace();

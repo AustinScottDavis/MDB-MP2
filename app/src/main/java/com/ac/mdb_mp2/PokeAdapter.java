@@ -2,6 +2,7 @@ package com.ac.mdb_mp2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         if (URLUtil.isValidUrl(url)) {
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         } else {
-            Glide.with(holder.imageView.getContext()).load("https://t5.rbxcdn.com/1fd52587f9b87d16ba1550109abe2377").into(holder.imageView);
+            holder.imageView.setImageResource(R.drawable.mega);
         }
     }
 
