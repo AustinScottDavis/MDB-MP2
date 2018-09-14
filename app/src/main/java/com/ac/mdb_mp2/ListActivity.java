@@ -17,7 +17,6 @@ import java.util.Comparator;
 public class ListActivity extends AppCompatActivity {
     ArrayList<Pokemon> pokemonDataList;
     ArrayList<Pokemon> filteredPokemon;
-    ArrayList<Pokemon> sortedByNumber;
     private RecyclerView pokeRecyclerView;
     private RecyclerView.Adapter pokeAdapter;
     private RecyclerView.LayoutManager pokeLayoutManager;
@@ -39,6 +38,7 @@ public class ListActivity extends AppCompatActivity {
         clearButton = findViewById(R.id.clearButton);
         sortButton = findViewById(R.id.sortButton);
         grid = false;
+        sortByNumber = false;
 
         //creating the recycler view
         pokemonDataList = Utils.allPokemon;
@@ -106,14 +106,29 @@ public class ListActivity extends AppCompatActivity {
 
     public void sort() {
 
-        Collections.sort(pokemonDataList, new Comparator<Pokemon>() {
+        if (!sortByNumber) {
+            Collections.sort(pokemonDataList, new Comparator<Pokemon>() {
 
-            public int compare(Pokemon a, Pokemon b) {
-                return Integer.valueOf(a.number).compareTo(b.number);
-            }
+                public int compare(Pokemon a, Pokemon b) {
+                    return Integer.valueOf(a.number).compareTo(b.number);
+                }
 
-        });
+            });
+            sortButton.setText("#");
+        }
 
+        if (sortByNumber) {
+            Collections.sort(pokemonDataList, new Comparator<Pokemon>() {
+
+                public int compare(Pokemon a, Pokemon b) {
+                    return a.name.compareTo(b.name);
+                }
+
+            });
+            sortButton.setText("Name");
+        }
+
+        sortByNumber = !sortByNumber;
 
     }
 
@@ -133,23 +148,34 @@ public class ListActivity extends AppCompatActivity {
                     if (Utils.allPokemon.get(i).spDefense < Utils.minSpecDefFilter) { continue; }
                     if (Utils.allPokemon.get(i).speed < Utils.minSpeedFilter) { continue; }
                     if (Utils.allPokemon.get(i).total < Utils.minTotalFilter) { continue; }
-                    if (Utils.firstType != "") {
+                    if ((Utils.firstType != "" && Utils.firstType != "Select Type") &&
+                            (Utils.secondType != "" && Utils.secondType != "Select Type")) {
+                        if (!Utils.allPokemon.get(i).type.contains(Utils.firstType) &&
+                                !Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
+                    }
+                    if ((Utils.firstType != "" && Utils.firstType != "Select Type") &&
+                            !(Utils.secondType != "" && Utils.secondType != "Select Type")) {
                         if (!Utils.allPokemon.get(i).type.contains(Utils.firstType)) { continue; }
                     }
-                    if (Utils.secondType != "") {
+                    if (!(Utils.firstType != "" && Utils.firstType != "Select Type") &&
+                            (Utils.secondType != "" && Utils.secondType != "Select Type")) {
                         if (!Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
                     }
+
+
                     filteredPokemon.add(Utils.allPokemon.get(i));
                 }
 
                 pokemonDataList = filteredPokemon;
-                pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-                pokeRecyclerView.setHasFixedSize(true);
-                pokeLayoutManager = new LinearLayoutManager(this);
+
+                pokeAdapter.notifyDataSetChanged();
+//                pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+//                pokeRecyclerView.setHasFixedSize(true);
+//                pokeLayoutManager = new LinearLayoutManager(this);
 
 
                 resetLayout();
-                System.out.println(pokemonDataList);
+                //System.out.println(pokemonDataList);
                 browseList();
             }
             if (resultCode == Activity.RESULT_CANCELED) {

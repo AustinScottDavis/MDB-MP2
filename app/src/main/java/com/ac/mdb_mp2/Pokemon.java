@@ -2,9 +2,10 @@ package com.ac.mdb_mp2;
 
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pokemon {
+public class Pokemon implements Serializable {
     String name;
     int number;
     int attack;

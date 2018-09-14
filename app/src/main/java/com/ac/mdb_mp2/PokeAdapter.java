@@ -1,6 +1,7 @@
 package com.ac.mdb_mp2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,8 @@ import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import java.util.ArrayList;
 
 import com.bumptech.glide.Glide;
@@ -44,14 +46,24 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         return data.size();
     }
 
-    public static class PokeViewHolder extends RecyclerView.ViewHolder {
+    public class PokeViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ImageView imageView;
 
-        public PokeViewHolder(View itemView) {
+        public PokeViewHolder(final View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Pokemon pokemon = data.get(getAdapterPosition());
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("pokemon", pokemon);
+                    i.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                }
+            });
         }
     }
 
