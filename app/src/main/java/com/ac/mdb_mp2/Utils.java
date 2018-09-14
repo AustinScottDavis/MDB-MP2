@@ -45,7 +45,9 @@ public class Utils {
                 // add type
                 JSONArray arr = pokemonInfo.getJSONArray("Type");
                 ArrayList<String> type = new ArrayList<String>();
-                allTypes.add("Select Type");
+                if (!allTypes.contains("Select Type")) {
+                    allTypes.add("Select Type");
+                }
                 for (int i = 0; i < arr.length(); i++) {
                     String currentType = arr.getString(i);
                     type.add(currentType);
@@ -53,6 +55,7 @@ public class Utils {
                     if (!allTypes.contains(currentType)) {
                         allTypes.add(currentType);
                     }
+
                 }
 
                 String flavorText = pokemonInfo.getString("FlavorText");
