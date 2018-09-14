@@ -32,7 +32,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
     public void onBindViewHolder(PokeViewHolder holder, int position) {
         holder.textView.setText(data.get(position).name);
         String currentName = data.get(position).name.trim().toLowerCase();
-        System.out.println(currentName);
+        //System.out.println(currentName);
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
         if (URLUtil.isValidUrl(url)) {
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
@@ -53,5 +53,16 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageView);
         }
+    }
+
+    //following two methods prevent the list from repeating
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 }

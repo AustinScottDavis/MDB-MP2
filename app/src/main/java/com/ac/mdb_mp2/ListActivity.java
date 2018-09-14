@@ -11,17 +11,22 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<Pokemon> pokemonDataList;
     ArrayList<Pokemon> filteredPokemon;
+    ArrayList<Pokemon> sortedByNumber;
     private RecyclerView pokeRecyclerView;
     private RecyclerView.Adapter pokeAdapter;
     private RecyclerView.LayoutManager pokeLayoutManager;
     Button listGridSwitch;
     Button moreFiltersButton;
     Button clearButton;
+    Button sortButton;
     boolean grid;
+    boolean sortByNumber;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +37,7 @@ public class ListActivity extends AppCompatActivity {
         listGridSwitch = findViewById(R.id.listGridButton);
         moreFiltersButton = findViewById(R.id.moreFilters);
         clearButton = findViewById(R.id.clearButton);
+        sortButton = findViewById(R.id.sortButton);
         grid = false;
 
         //creating the recycler view
@@ -89,6 +95,26 @@ public class ListActivity extends AppCompatActivity {
                 resetLayout();
             }
         });
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sort();
+                resetLayout();
+            }
+        });
+    }
+
+    public void sort() {
+
+        Collections.sort(pokemonDataList, new Comparator<Pokemon>() {
+
+            public int compare(Pokemon a, Pokemon b) {
+                return Integer.valueOf(a.number).compareTo(b.number);
+            }
+
+        });
+
+
     }
 
     @Override
@@ -121,7 +147,9 @@ public class ListActivity extends AppCompatActivity {
                 pokeRecyclerView.setHasFixedSize(true);
                 pokeLayoutManager = new LinearLayoutManager(this);
 
+
                 resetLayout();
+                System.out.println(pokemonDataList);
                 browseList();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
