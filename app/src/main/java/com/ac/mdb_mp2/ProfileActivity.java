@@ -76,7 +76,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.searchButton:
-                System.out.println("HERERERE");
                 TextView nameText = findViewById(R.id.profileName);
                 String escapedQuery = null;
                 try {
@@ -84,7 +83,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                System.out.println(escapedQuery);
                 Uri uri = Uri.parse("http://www.google.com/#q=" + escapedQuery);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);

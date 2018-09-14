@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +30,7 @@ public class ListActivity extends AppCompatActivity {
     Random rand;
     boolean grid;
     boolean sortByNumber;
+    SearchView searchView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,40 @@ public class ListActivity extends AppCompatActivity {
         pokeRecyclerView.setHasFixedSize(true);
         pokeLayoutManager = new LinearLayoutManager(this);
 
+        searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchPokemon(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // given new text, find search results
+                searchPokemon(newText);
+                return false;
+            }
+        });
+
+        resetLayout();
+        browseList();
+    }
+
+    private void searchPokemon(String searchText) {
+        filteredPokemon = new ArrayList<Pokemon>();
+        filteredPokemon.clear();
+        for (int i = 0; i < Utils.allPokemon.size(); i += 1) {
+            Pokemon current = Utils.allPokemon.get(i);
+            String currentPokemonNumber = Integer.toString(current.number);
+
+            if (current.name.toLowerCase().contains(searchText.toLowerCase()) || currentPokemonNumber.equals(searchText)) {
+                filteredPokemon.add(current);
+            }
+        }
+
+        pokemonDataList = filteredPokemon;
+        pokeAdapter.notifyDataSetChanged();
         resetLayout();
         browseList();
     }
