@@ -24,4 +24,14 @@
     <string name="textview">TextView</string>
     <string name="pokemonimage">Pokemonimage</string>
     <string name="todo">TODO</string>
+    <string name="filter_by">FILTER</string>
+    <string name="first_type">First Type</string>
+    <string name="second_type">Second Type</string>
+    <string name="min_hp">Min HP</string>
+    <string name="min_attack">Min Attack</string>
+    <string name="min_defense">Min Defense</string>
+    <string name="min_spec_atk">Min Spec. Atk</string>
+    <string name="min_spec_def">Min Spec. Def</string>
+    <string name="min_speed">Min Speed</string>
+    <string name="min_total">Min Total</string>
 </resources>
