@@ -114,7 +114,6 @@ public class ListActivity extends AppCompatActivity {
                 } else {
                     listGridSwitch.setText(R.string.listText);
                 }
-
                 resetLayout();
                 //System.out.println(grid);
             }
@@ -122,6 +121,8 @@ public class ListActivity extends AppCompatActivity {
         moreFiltersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchView.setQuery("", false);
+                searchView.clearFocus();
                 Intent i = new Intent(ListActivity.this, SearchActivity.class);
                 ListActivity.this.startActivityForResult(i, 1);
             }
@@ -129,6 +130,8 @@ public class ListActivity extends AppCompatActivity {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchView.setQuery("", false);
+                searchView.clearFocus();
                 pokemonDataList = Utils.allPokemon;
                 pokeRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                 pokeRecyclerView.setHasFixedSize(true);
@@ -168,6 +171,8 @@ public class ListActivity extends AppCompatActivity {
                 }
                 pokemonDataList = randPokemon;
                 pokeAdapter.notifyDataSetChanged();
+                searchView.setQuery("", false);
+                searchView.clearFocus();
                 resetLayout();
             }
         });

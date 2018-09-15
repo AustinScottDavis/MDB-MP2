@@ -67,9 +67,6 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-
-
-
         if (!minHP.getText().toString().isEmpty())             { Utils.minHPFilter = Integer.parseInt(minHP.getText().toString()); }
         if (!minAttack.getText().toString().isEmpty())         { Utils.minAtkFilter = Integer.parseInt(minAttack.getText().toString()); }
         if (!minDefense.getText().toString().isEmpty())        { Utils.minDefFilter = Integer.parseInt(minDefense.getText().toString()); }
