@@ -22,10 +22,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-
+        // get info when screen opened
         Intent intent = getIntent();
         Pokemon currentPokemon = (Pokemon) intent.getSerializableExtra("pokemon");
 
+        // fill all info
         TextView hp = findViewById(R.id.profileHP);
         hp.setText(getString(R.string.hp) + Integer.toString(currentPokemon.hp));
 

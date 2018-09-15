@@ -222,23 +222,19 @@ public class ListActivity extends AppCompatActivity {
                     if (Utils.allPokemon.get(i).spDefense < Utils.minSpecDefFilter) { continue; }
                     if (Utils.allPokemon.get(i).speed < Utils.minSpeedFilter) { continue; }
                     if (Utils.allPokemon.get(i).total < Utils.minTotalFilter) { continue; }
-                    if ((Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
-                            (Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
-                        if (!Utils.allPokemon.get(i).type.contains(Utils.firstType) &&
-                                !Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
-                    }
-                    if ((Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
-                            !(Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
-                        if (!Utils.allPokemon.get(i).type.contains(Utils.firstType)) { continue; }
-                    }
-                    if (!(Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
-                            (Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
-                        if (!Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
+
+                    if ((Utils.firstType != "" && Utils.firstType != "Select Type") ||
+                            (Utils.secondType != "" && Utils.secondType != "Select Type")) {
+                        // either type is entered
+                        if (Utils.allPokemon.get(i).type.contains(Utils.firstType) ||
+                                Utils.allPokemon.get(i).type.contains(Utils.secondType)) {
+                            filteredPokemon.add(Utils.allPokemon.get(i));
+                        }
+                    } else {
+                        filteredPokemon.add(Utils.allPokemon.get(i));
                     }
 
 
-                    filteredPokemon.add(Utils.allPokemon.get(i));
-                    System.out.println(i);
                 }
 
                 pokemonDataList = filteredPokemon;

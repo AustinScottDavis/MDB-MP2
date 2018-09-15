@@ -9,10 +9,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Utils {
-
+    // lists of pokemon and types used in all classes
     public static ArrayList<Pokemon> allPokemon = new ArrayList<Pokemon>();
     public static ArrayList<String> allTypes = new ArrayList<String>();
 
+    // variables used for filter
+    // static variables so they can be accessed in all settings
     public static int minHPFilter = 0;
     public static int minAtkFilter = 0;
     public static int minDefFilter = 0;
