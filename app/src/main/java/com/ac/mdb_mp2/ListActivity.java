@@ -173,7 +173,7 @@ public class ListActivity extends AppCompatActivity {
                 }
 
             });
-            sortButton.setText("#");
+            sortButton.setText(R.string.sort_az);
         }
 
         if (sortByNumber) {
@@ -184,7 +184,7 @@ public class ListActivity extends AppCompatActivity {
                 }
 
             });
-            sortButton.setText("Name");
+            sortButton.setText(R.string.sort_num);
         }
 
         sortByNumber = !sortByNumber;
