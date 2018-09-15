@@ -1,6 +1,7 @@
 package com.ac.mdb_mp2;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,11 +63,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         String currentName = currentPokemon.name.trim().toLowerCase();
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
+        ImageView profile = findViewById(R.id.profileImage);
+
         if (URLUtil.isValidUrl(url)) {
-            ImageView profile = findViewById(R.id.profileImage);
             Glide.with(profile.getContext()).load(url).into(profile);
         }
-
+        if (currentName.contains("(")){
+            Drawable mega = getResources().getDrawable(R.drawable.pokeball);
+            profile.setImageDrawable(mega);
+        }
+        if (currentName.contains("mega")){
+            Drawable mega = getResources().getDrawable(R.drawable.mega);
+            profile.setImageDrawable(mega);
+        }
         Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
 

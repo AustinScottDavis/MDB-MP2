@@ -16,6 +16,8 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import java.util.ArrayList;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
+
 
 public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder> {
     Context context;
@@ -36,12 +38,21 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
     public void onBindViewHolder(PokeViewHolder holder, int position) {
         holder.textView.setText(data.get(position).name);
         String currentName = data.get(position).name.trim().toLowerCase();
-        //System.out.println(currentName);
+        //currentName = currentName.replaceAll("\\p{P}", "");
+        currentName = currentName.replaceAll(" ", "");
+        System.out.println(currentName);
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
+
         if (URLUtil.isValidUrl(url)) {
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
-        } else {
-           // holder.imageView.setImageDrawable();
+        }
+        if (currentName.contains("(")){
+            Drawable mega = context.getResources().getDrawable(R.drawable.pokeball);
+            holder.imageView.setImageDrawable(mega);
+        }
+        if (currentName.contains("mega")){
+            Drawable mega = context.getResources().getDrawable(R.drawable.mega);
+            holder.imageView.setImageDrawable(mega);
         }
     }
 
