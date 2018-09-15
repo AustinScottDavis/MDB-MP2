@@ -9,24 +9,29 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="Filter"
+                android:text="Filter By:"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 tools:layout_editor_absoluteX="13dp"
                 tools:layout_editor_absoluteY="9dp" />
 
             <TextView
                 android:id="@+id/firstType"
-                android:layout_width="match_parent"
+                android:layout_width="211dp"
                 android:layout_height="wrap_content"
                 android:text="First Type"
                 tools:layout_editor_absoluteX="50dp"
@@ -34,7 +39,7 @@
 
             <Spinner
                 android:id="@+id/spinner1"
-                android:layout_width="match_parent"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"
@@ -43,15 +48,16 @@
 
             <TextView
                 android:id="@+id/secondType"
-                android:layout_width="match_parent"
+                android:layout_width="214dp"
                 android:layout_height="wrap_content"
                 android:text="Second Type"
+                android:textAllCaps="false"
                 tools:layout_editor_absoluteX="50dp"
                 tools:layout_editor_absoluteY="159dp" />
 
             <Spinner
                 android:id="@+id/spinner2"
-                android:layout_width="match_parent"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"
@@ -62,11 +68,11 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min HP" />
+                android:text="Minimum HP" />
 
             <EditText
                 android:id="@+id/minHP"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -75,11 +81,11 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min attack" />
+                android:text="Minimum Attack" />
 
             <EditText
                 android:id="@+id/minAttack"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -88,11 +94,11 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min defense" />
+                android:text="Minimum Defense" />
 
             <EditText
                 android:id="@+id/minDefense"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -101,11 +107,11 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min special attack" />
+                android:text="Minimum Special Attack" />
 
             <EditText
                 android:id="@+id/minSpecialAttack"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -114,11 +120,11 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min special defense" />
+                android:text="Minimum Special Defense" />
 
             <EditText
                 android:id="@+id/minSpecialDefense"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -127,11 +133,11 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min speed" />
+                android:text="Minimum Speed" />
 
             <EditText
                 android:id="@+id/minSpeed"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
@@ -140,11 +146,11 @@
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="min total" />
+                android:text="Minimum Total" />
 
             <EditText
                 android:id="@+id/minTotal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number" />
