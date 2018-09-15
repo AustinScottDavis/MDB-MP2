@@ -110,9 +110,9 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 grid = !grid;
                 if (grid) {
-                    listGridSwitch.setText("Grid");
+                    listGridSwitch.setText(R.string.grid);
                 } else {
-                    listGridSwitch.setText("List");
+                    listGridSwitch.setText(R.string.listText);
                 }
 
                 resetLayout();
@@ -217,17 +217,17 @@ public class ListActivity extends AppCompatActivity {
                     if (Utils.allPokemon.get(i).spDefense < Utils.minSpecDefFilter) { continue; }
                     if (Utils.allPokemon.get(i).speed < Utils.minSpeedFilter) { continue; }
                     if (Utils.allPokemon.get(i).total < Utils.minTotalFilter) { continue; }
-                    if ((Utils.firstType != "" && Utils.firstType != "Select Type") &&
-                            (Utils.secondType != "" && Utils.secondType != "Select Type")) {
+                    if ((Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
+                            (Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
                         if (!Utils.allPokemon.get(i).type.contains(Utils.firstType) &&
                                 !Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
                     }
-                    if ((Utils.firstType != "" && Utils.firstType != "Select Type") &&
-                            !(Utils.secondType != "" && Utils.secondType != "Select Type")) {
+                    if ((Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
+                            !(Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
                         if (!Utils.allPokemon.get(i).type.contains(Utils.firstType)) { continue; }
                     }
-                    if (!(Utils.firstType != "" && Utils.firstType != "Select Type") &&
-                            (Utils.secondType != "" && Utils.secondType != "Select Type")) {
+                    if (!(Utils.firstType != "" && Utils.firstType != getString(R.string.selectType)) &&
+                            (Utils.secondType != "" && Utils.secondType != getString(R.string.selectType))) {
                         if (!Utils.allPokemon.get(i).type.contains(Utils.secondType)) { continue; }
                     }
 

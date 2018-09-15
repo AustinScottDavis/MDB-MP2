@@ -27,25 +27,25 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Pokemon currentPokemon = (Pokemon) intent.getSerializableExtra("pokemon");
 
         TextView hp = findViewById(R.id.profileHP);
-        hp.setText("HP: " + Integer.toString(currentPokemon.hp));
+        hp.setText(getString(R.string.hp) + Integer.toString(currentPokemon.hp));
 
         TextView speed = findViewById(R.id.profileSpeed);
-        speed.setText("SPEED: " + Integer.toString(currentPokemon.speed));
+        speed.setText(getString(R.string.speed) + Integer.toString(currentPokemon.speed));
 
         TextView attack = findViewById(R.id.profileAttack);
-        attack.setText("ATTACK: " + Integer.toString(currentPokemon.attack));
+        attack.setText(getString(R.string.attack) + Integer.toString(currentPokemon.attack));
 
         TextView defense = findViewById(R.id.profileDefense);
-        defense.setText("DEFENSE: " + Integer.toString(currentPokemon.defense));
+        defense.setText(getString(R.string.defense) + Integer.toString(currentPokemon.defense));
 
         TextView specialAttack = findViewById(R.id.profileSpecAtk);
-        specialAttack.setText("SP. ATK: " + Integer.toString(currentPokemon.spAttack));
+        specialAttack.setText(getString(R.string.spAtk) + Integer.toString(currentPokemon.spAttack));
 
         TextView specialDefense = findViewById(R.id.profileSpecDef);
-        specialDefense.setText("SP. DEF: " + Integer.toString(currentPokemon.spDefense));
+        specialDefense.setText(getString(R.string.spDef) + Integer.toString(currentPokemon.spDefense));
 
         TextView total = findViewById(R.id.profileTotal);
-        total.setText("TOTAL: " + Integer.toString(currentPokemon.total));
+        total.setText(getString(R.string.total) + Integer.toString(currentPokemon.total));
 
         TextView name = findViewById(R.id.profileName);
         name.setText(currentPokemon.name);
