@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.URLUtil;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,10 +39,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         defense.setText("DEFENSE: " + Integer.toString(currentPokemon.defense));
 
         TextView specialAttack = findViewById(R.id.profileSpecAtk);
-        specialAttack.setText("SPECIAL ATTACK: " + Integer.toString(currentPokemon.spAttack));
+        specialAttack.setText("SP. ATK: " + Integer.toString(currentPokemon.spAttack));
 
         TextView specialDefense = findViewById(R.id.profileSpecDef);
-        specialDefense.setText("SPECIAL DEFENSE: " + Integer.toString(currentPokemon.spDefense));
+        specialDefense.setText("SP. DEF: " + Integer.toString(currentPokemon.spDefense));
 
         TextView total = findViewById(R.id.profileTotal);
         total.setText("TOTAL: " + Integer.toString(currentPokemon.total));
@@ -52,7 +51,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         name.setText(currentPokemon.name);
 
         TextView number = findViewById(R.id.profileNumber);
-        number.setText(Integer.toString(currentPokemon.number));
+        String type = currentPokemon.type.get(0);
+        if (currentPokemon.type.size() == 2) {
+            type = type + ", " + currentPokemon.type.get(1);
+        }
+        number.setText(Integer.toString(currentPokemon.number) + ": " + type);
 
         TextView species = findViewById(R.id.profileSpecies);
         species.setText(currentPokemon.species);
@@ -68,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         if (URLUtil.isValidUrl(url)) {
             Glide.with(profile.getContext()).load(url).into(profile);
         }
+
         if (currentName.contains("(")){
             Drawable mega = getResources().getDrawable(R.drawable.pokeball);
             profile.setImageDrawable(mega);
@@ -76,7 +80,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             Drawable mega = getResources().getDrawable(R.drawable.mega);
             profile.setImageDrawable(mega);
         }
-        Button searchButton = findViewById(R.id.searchButton);
+
+
+        ImageView searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
 
     }
