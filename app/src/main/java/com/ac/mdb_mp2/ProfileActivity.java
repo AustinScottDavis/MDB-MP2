@@ -73,12 +73,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         if (currentName.contains("(")){
-            Drawable mega = getResources().getDrawable(R.drawable.pokeball);
-            profile.setImageDrawable(mega);
-        }
-        if (currentName.contains("mega")){
-            Drawable mega = getResources().getDrawable(R.drawable.mega);
-            profile.setImageDrawable(mega);
+            Drawable filler = getResources().getDrawable(R.drawable.pokeball);
+            profile.setImageDrawable(filler);
         }
 
 

@@ -42,25 +42,13 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         currentName = currentName.replaceAll(" ", "");
         currentName = currentName.replaceAll("\\'", "");
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
-        if (URLUtil.isValidUrl(url)){
-            Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
-            if (currentName.contains("(")){
-                Drawable mega = context.getResources().getDrawable(R.drawable.pokeball);
-                holder.imageView.setImageDrawable(mega);
-            }
-            if (currentName.contains("mega")){
-                Drawable mega = context.getResources().getDrawable(R.drawable.mega);
-                holder.imageView.setImageDrawable(mega);
-            }
-        }
         if (currentName.contains("(")){
             Drawable mega = context.getResources().getDrawable(R.drawable.pokeball);
             holder.imageView.setImageDrawable(mega);
+        } else {
+            Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         }
-        if (currentName.contains("mega")){
-            Drawable mega = context.getResources().getDrawable(R.drawable.mega);
-            holder.imageView.setImageDrawable(mega);
-        }
+
     }
 
     @Override
