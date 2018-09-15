@@ -2,6 +2,7 @@ package com.ac.mdb_mp2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         if (URLUtil.isValidUrl(url)) {
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
         } else {
-            holder.imageView.setImageResource(R.drawable.mega);
+           // holder.imageView.setImageDrawable();
         }
     }
 
