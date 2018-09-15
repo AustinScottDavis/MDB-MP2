@@ -40,11 +40,18 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.PokeViewHolder
         String currentName = data.get(position).name.trim().toLowerCase();
         //currentName = currentName.replaceAll("\\p{P}", "");
         currentName = currentName.replaceAll(" ", "");
-        System.out.println(currentName);
+        currentName = currentName.replaceAll("\\'", "");
         String url = "https://img.pokemondb.net/artwork/" + currentName + ".jpg";
-
-        if (URLUtil.isValidUrl(url)) {
+        if (URLUtil.isValidUrl(url)){
             Glide.with(holder.imageView.getContext()).load(url).into(holder.imageView);
+            if (currentName.contains("(")){
+                Drawable mega = context.getResources().getDrawable(R.drawable.pokeball);
+                holder.imageView.setImageDrawable(mega);
+            }
+            if (currentName.contains("mega")){
+                Drawable mega = context.getResources().getDrawable(R.drawable.mega);
+                holder.imageView.setImageDrawable(mega);
+            }
         }
         if (currentName.contains("(")){
             Drawable mega = context.getResources().getDrawable(R.drawable.pokeball);

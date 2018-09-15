@@ -50,25 +50,36 @@ public class SearchActivity extends AppCompatActivity {
         minSpeed = findViewById(R.id.minSpeed);
         minTotal = findViewById(R.id.minTotal);
 
+
+        if (!(Utils.minHPFilter == 0)) {minHP.setText(Integer.toString(Utils.minHPFilter)); }
+        if (!(Utils.minAtkFilter == 0))   {minAttack.setText(Integer.toString(Utils.minAtkFilter)); }
+        if (!(Utils.minDefFilter == 0))  {minDefense.setText(Integer.toString(Utils.minDefFilter)); }
+        if (!(Utils.minSpecAtkFilter == 0))  {minSpecialAttack.setText(Integer.toString(Utils.minSpecAtkFilter)); }
+        if (!(Utils.minSpecDefFilter ==0))  {minSpecialDefense.setText(Integer.toString(Utils.minSpecDefFilter)); }
+        if (!(Utils.minSpeedFilter == 0))  {minSpeed.setText(Integer.toString(Utils.minSpeedFilter)); }
+        if (!(Utils.minTotalFilter == 0))  {minTotal.setText(Integer.toString(Utils.minTotalFilter)); }
+
+        if (!(Utils.firstType == "")) {dropdown.setSelection(adapter.getPosition(Utils.firstType));}
+        if (!(Utils.secondType == "")) {dropdown2.setSelection(adapter2.getPosition(Utils.secondType));}
     }
 
     // update list when filters are applied
     @Override
     public void onBackPressed() {
-        System.out.println(minHP.getText());
 
 
 
-        if (!minHP.getText().toString().isEmpty()) { Utils.minHPFilter = Integer.parseInt(minHP.getText().toString()); }
-        if (!minAttack.getText().toString().isEmpty()) { Utils.minAtkFilter = Integer.parseInt(minAttack.getText().toString()); }
-        if (!minDefense.getText().toString().isEmpty()) { Utils.minDefFilter = Integer.parseInt(minDefense.getText().toString()); }
-        if (!minSpecialAttack.getText().toString().isEmpty()) { Utils.minSpecAtkFilter = Integer.parseInt(minSpecialAttack.getText().toString()); }
+
+        if (!minHP.getText().toString().isEmpty())             { Utils.minHPFilter = Integer.parseInt(minHP.getText().toString()); }
+        if (!minAttack.getText().toString().isEmpty())         { Utils.minAtkFilter = Integer.parseInt(minAttack.getText().toString()); }
+        if (!minDefense.getText().toString().isEmpty())        { Utils.minDefFilter = Integer.parseInt(minDefense.getText().toString()); }
+        if (!minSpecialAttack.getText().toString().isEmpty())  { Utils.minSpecAtkFilter = Integer.parseInt(minSpecialAttack.getText().toString()); }
         if (!minSpecialDefense.getText().toString().isEmpty()) { Utils.minSpecDefFilter = Integer.parseInt(minSpecialDefense.getText().toString()); }
-        if (!minSpeed.getText().toString().isEmpty()) { Utils.minSpeedFilter = Integer.parseInt(minSpeed.getText().toString()); }
-        if (!minTotal.getText().toString().isEmpty()) { Utils.minTotalFilter = Integer.parseInt(minTotal.getText().toString()); }
+        if (!minSpeed.getText().toString().isEmpty())          { Utils.minSpeedFilter = Integer.parseInt(minSpeed.getText().toString()); }
+        if (!minTotal.getText().toString().isEmpty())          { Utils.minTotalFilter = Integer.parseInt(minTotal.getText().toString()); }
 
-        if (dropdown.getSelectedItem() != null) { Utils.firstType = dropdown.getSelectedItem().toString(); }
-        if (dropdown2.getSelectedItem() != null) { Utils.secondType = dropdown2.getSelectedItem().toString(); }
+        if (dropdown.getSelectedItem() != null)                { Utils.firstType = dropdown.getSelectedItem().toString(); }
+        if (dropdown2.getSelectedItem() != null)               { Utils.secondType = dropdown2.getSelectedItem().toString(); }
 
 
         Intent returnIntent = new Intent();

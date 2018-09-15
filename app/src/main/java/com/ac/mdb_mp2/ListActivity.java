@@ -134,6 +134,16 @@ public class ListActivity extends AppCompatActivity {
                 pokeRecyclerView.setHasFixedSize(true);
                 pokeLayoutManager = new LinearLayoutManager(ListActivity.this);
 
+                Utils.minHPFilter = 0;
+                Utils.minAtkFilter = 0;
+                Utils.minDefFilter = 0;
+                Utils.minSpecAtkFilter = 0;
+                Utils.minSpecDefFilter = 0;
+                Utils.minSpeedFilter = 0;
+                Utils.minTotalFilter = 0;
+
+                Utils.firstType = "";
+                Utils.secondType = "";
                 resetLayout();
             }
         });
